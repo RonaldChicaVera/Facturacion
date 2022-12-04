@@ -1,26 +1,30 @@
 import React from 'react';
-import logo from './logo.svg';
+import { useAuth0 } from '@auth0/auth0-react';
+
+import TranslationProvider from '@core/providers/i18n/translation-provider';
+
+import LoginButton from '@shared/components/commons/buttons/LoginButton';
+import LogoutButton from '@shared/components/commons/buttons/LogOutButton';
+
+import Profile from '@modules/profile/Profile';
+
 import './App.css';
 
-function App() {
+function App(): React.ReactElement {
+  const { isAuthenticated } = useAuth0();
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div>
+      {isAuthenticated ? (
+        <>
+          <Profile />
+          <LogoutButton />
+        </>
+      ) : (
+        <LoginButton />
+      )}
     </div>
   );
 }
 
-export default App;
+export default TranslationProvider(App);
