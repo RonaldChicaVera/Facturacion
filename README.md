@@ -1,4 +1,4 @@
-# Sofo v2
+# Facturación Electrónica
 
 This project was made it with React and Rest API.
 
