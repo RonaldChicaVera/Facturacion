@@ -26,3 +26,5 @@ yarn-error.log*
 test-report.xml
 eslint-report.json
 /.scannerwork
+
+.eslintcache
